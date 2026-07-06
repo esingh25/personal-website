@@ -2,9 +2,9 @@ import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60">
+    <article className="card card-lift group flex h-full flex-col p-6">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="font-display text-2xl text-ink">{project.name}</h3>
+        <h3 className="font-display text-title text-ink">{project.name}</h3>
         {project.githubUrl && (
           <a
             href={project.githubUrl}
@@ -33,10 +33,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="mt-auto pt-5">
         <ul className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border border-line px-3 py-1 text-xs text-ink-muted"
-            >
+            <li key={tech} className="chip text-xs">
               {tech}
             </li>
           ))}

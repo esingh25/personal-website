@@ -52,9 +52,9 @@ export default function Home() {
         <section className="mx-auto max-w-4xl px-6 py-24">
           <SectionHeading id="education" title="Education" />
           <Reveal>
-            <div className="rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <div className="card p-6 sm:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="font-display text-2xl text-ink">{education.school}</h3>
+                <h3 className="font-display text-title text-ink">{education.school}</h3>
                 <p className="text-sm text-ink-muted">{education.location}</p>
               </div>
               <p className="mt-1 text-accent">{education.degree}</p>
@@ -64,10 +64,7 @@ export default function Home() {
               </h4>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {education.coursework.map((course) => (
-                  <li
-                    key={course}
-                    className="rounded-full border border-line px-3 py-1 text-sm text-ink-muted"
-                  >
+                  <li key={course} className="chip">
                     {course}
                   </li>
                 ))}

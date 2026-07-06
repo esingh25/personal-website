@@ -29,7 +29,7 @@ export function Hero() {
       </motion.p>
       <motion.h1
         {...fadeUp(0.15)}
-        className="font-display text-5xl leading-tight text-ink sm:text-7xl"
+        className="font-display text-hero text-ink"
       >
         {site.name}
       </motion.h1>
@@ -43,7 +43,7 @@ export function Hero() {
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="rounded-full border border-line px-5 py-2 text-sm text-ink hover:border-accent hover:text-accent transition-colors"
+              className="inline-block rounded-full border border-line px-5 py-2 text-sm text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent motion-reduce:hover:translate-y-0"
             >
               {link.label}
             </a>

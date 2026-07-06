@@ -10,7 +10,7 @@ export function Nav() {
         <ul className="order-last flex w-full flex-wrap items-center gap-x-5 gap-y-1 text-sm text-ink-muted sm:order-none sm:w-auto sm:gap-6">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="hover:text-ink transition-colors">
+              <a href={link.href} className="nav-link">
                 {link.label}
               </a>
             </li>
