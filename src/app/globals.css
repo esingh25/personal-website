@@ -5,17 +5,8 @@
    The inline script in layout.tsx stamps data-theme on <html> before paint;
    the media query below covers the no-JS fallback only.
    --------------------------------------------------------------------------- */
+/* Dark is the default; light is the explicit opt-in via the dock toggle. */
 :root {
-  --bg: #fcfcfb;
-  --surface: #f5f4f1;
-  --line: #e6e4de;
-  --ink: #1c1b18;
-  --ink-muted: #6d6a63;
-  --accent: #9a5b26;
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
   --bg: #141412;
   --surface: #1c1c19;
   --line: #2b2a26;
@@ -25,16 +16,14 @@
   color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: #141412;
-    --surface: #1c1c19;
-    --line: #2b2a26;
-    --ink: #ece8e1;
-    --ink-muted: #a5a199;
-    --accent: #d4a373;
-    color-scheme: dark;
-  }
+:root[data-theme="light"] {
+  --bg: #fcfcfb;
+  --surface: #f5f4f1;
+  --line: #e6e4de;
+  --ink: #1c1b18;
+  --ink-muted: #6d6a63;
+  --accent: #9a5b26;
+  color-scheme: light;
 }
 
 @theme inline {

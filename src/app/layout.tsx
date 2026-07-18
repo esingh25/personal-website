@@ -21,15 +21,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fcfcfb" },
-    { media: "(prefers-color-scheme: dark)", color: "#141412" },
-  ],
+  themeColor: "#141412",
 };
 
-// Runs before paint. Stamps data-theme ONLY when the user has an explicit
-// stored choice; otherwise the :root:not([data-theme]) media query in
-// globals.css tracks the OS preference live (including mid-session changes).
+// Runs before paint. The site opens dark by default; a stored explicit choice
+// (from the dock toggle) is stamped so a returning light-mode visitor stays light.
 const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}}catch(e){}})()`;
 
 export default function RootLayout({

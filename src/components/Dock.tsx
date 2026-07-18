@@ -7,30 +7,22 @@ import { FileIcon, GitHubIcon, HomeIcon, LinkedInIcon, MailIcon, MoonIcon, SunIc
 
 type Theme = "light" | "dark";
 
-// Theme resolution mirrors globals.css: an explicit <html data-theme> wins;
-// otherwise the OS preference applies. Subscribe to both sources.
+// Theme resolution mirrors globals.css: dark unless <html data-theme="light">.
 function subscribeToTheme(callback: () => void) {
   const observer = new MutationObserver(callback);
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["data-theme"],
   });
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-  media.addEventListener("change", callback);
-  return () => {
-    observer.disconnect();
-    media.removeEventListener("change", callback);
-  };
+  return () => observer.disconnect();
 }
 
 function readTheme(): Theme {
-  const stamped = document.documentElement.dataset.theme;
-  if (stamped === "dark" || stamped === "light") return stamped;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
 }
 
 export function Dock() {
-  const theme = useSyncExternalStore<Theme>(subscribeToTheme, readTheme, () => "light");
+  const theme = useSyncExternalStore<Theme>(subscribeToTheme, readTheme, () => "dark");
 
   const toggleTheme = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
