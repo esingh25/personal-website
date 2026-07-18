@@ -5,6 +5,8 @@ export const site = {
   github: "https://github.com/esingh25",
   linkedin: "https://www.linkedin.com/in/esingh25",
   resume: "/resume.pdf",
+  /** Path under /public to the hero portrait; null renders the initials placeholder. */
+  photo: null as string | null,
   title: "Ekam Singh — CS & Math @ UW",
   description:
     "Ekam Singh — University of Washington student in Computer Science and Mathematics. I build things with AI: agentic RAG systems, AI code review tools, and MCP-powered dashboards.",

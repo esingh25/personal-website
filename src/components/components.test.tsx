@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { experience } from "@/data/experience";
 import { projects } from "@/data/projects";
+import { site } from "@/data/site";
+import { Dock } from "./Dock";
 import { ExperienceItem } from "./ExperienceItem";
-import { Nav } from "./Nav";
 import { ProjectCard } from "./ProjectCard";
 import { SkillGroupCard } from "./SkillGroupCard";
 
@@ -22,7 +23,7 @@ describe("ProjectCard", () => {
     expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("renders without a GitHub icon when there is no repo link", () => {
+  it("renders without a source button when there is no repo link", () => {
     const unlinked = projects.find((p) => !p.githubUrl);
     expect(unlinked).toBeDefined();
     render(<ProjectCard project={unlinked!} />);
@@ -57,16 +58,26 @@ describe("SkillGroupCard", () => {
   });
 });
 
-describe("Nav", () => {
-  it("renders anchor links to every section and a resume download", () => {
-    render(<Nav />);
+describe("Dock", () => {
+  it("links home, socials, and resume, and offers a theme toggle", () => {
+    render(<Dock />);
 
-    for (const section of ["Projects", "Experience", "Education", "Skills", "Contact"]) {
-      expect(screen.getByRole("link", { name: section })).toBeInTheDocument();
-    }
-    expect(screen.getByRole("link", { name: "Resume" })).toHaveAttribute(
+    // Desktop and mobile docks each render the item set once.
+    expect(screen.getAllByLabelText("Home")[0]).toHaveAttribute("href", "#top");
+    expect(screen.getAllByLabelText("GitHub")[0]).toHaveAttribute("href", site.github);
+    expect(screen.getAllByLabelText("LinkedIn")[0]).toHaveAttribute("href", site.linkedin);
+    expect(screen.getAllByLabelText("Email")[0]).toHaveAttribute(
       "href",
-      "/resume.pdf",
+      `mailto:${site.email}`,
     );
+    expect(screen.getAllByLabelText("Resume")[0]).toHaveAttribute("href", site.resume);
+    expect(screen.getAllByLabelText(/Switch to (light|dark) theme/)[0]).toBeInTheDocument();
+
+    for (const external of ["GitHub", "LinkedIn"]) {
+      expect(screen.getAllByLabelText(external)[0]).toHaveAttribute(
+        "rel",
+        "noopener noreferrer",
+      );
+    }
   });
 });

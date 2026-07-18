@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
 interface RevealProps {
@@ -9,13 +9,9 @@ interface RevealProps {
   className?: string;
 }
 
+// Reduced motion is handled globally by MotionProvider (MotionConfig
+// reducedMotion="user"), so server and client always render identical props.
 export function Reveal({ children, delay = 0, className }: RevealProps) {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
     <motion.div
       className={className}
