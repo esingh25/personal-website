@@ -9,6 +9,7 @@ import { SectionHeading, ShowcaseHeading } from "@/components/SectionHeading";
 import { SkillGroupCard } from "@/components/SkillGroupCard";
 import { certifications, education } from "@/data/education";
 import { experience } from "@/data/experience";
+import { interests } from "@/data/interests";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 import { skillGroups } from "@/data/skills";
@@ -75,10 +76,23 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+          <SectionHeading id="interests" index="05" title="Interests" />
+          <Reveal>
+            <ul className="flex flex-wrap gap-2">
+              {interests.map((interest) => (
+                <li key={interest} className="chip">
+                  {interest}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </section>
+
         <section className="mx-auto w-full max-w-3xl px-6 pt-32">
           <ShowcaseHeading
             id="projects"
-            index="05"
+            index="06"
             badge="My Projects"
             title="What I've been building"
             subtitle="Built with AI, shipped to GitHub. Here are a few of my favorites."
@@ -97,7 +111,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-32">
-          <ShowcaseHeading id="contact" index="06" badge="Contact" title="Get in Touch" />
+          <ShowcaseHeading id="contact" index="07" badge="Contact" title="Get in Touch" />
           <Reveal>
             <p className="mx-auto -mt-6 max-w-md text-center text-ink-muted">
               Want to chat? Drop me an email at{" "}

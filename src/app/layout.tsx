@@ -37,9 +37,9 @@ export const viewport: Viewport = {
   themeColor: "#0c1213",
 };
 
-// Runs before paint. The site opens dark by default; a stored explicit choice
-// (from the dock toggle) is stamped so a returning light-mode visitor stays light.
-const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}}catch(e){}})()`;
+// Every visit opens dark (the :root default). The toggle is session-only;
+// clear any preference persisted by earlier builds so old visitors heal.
+const themeInitScript = `(function(){try{localStorage.removeItem("theme")}catch(e){}})()`;
 
 export default function RootLayout({
   children,

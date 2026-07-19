@@ -24,14 +24,10 @@ function readTheme(): Theme {
 export function Dock() {
   const theme = useSyncExternalStore<Theme>(subscribeToTheme, readTheme, () => "dark");
 
+  // The choice is deliberately NOT persisted: every fresh visit opens dark.
   const toggleTheme = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      // Storage unavailable (private browsing) — theme still applies for the session.
-    }
   };
 
   const iconClass = "h-full w-full";
@@ -40,13 +36,7 @@ export function Dock() {
     { id: "github", title: "GitHub", icon: <GitHubIcon className={iconClass} />, href: site.github, external: true },
     { id: "linkedin", title: "LinkedIn", icon: <LinkedInIcon className={iconClass} />, href: site.linkedin, external: true },
     { id: "email", title: "Email", icon: <MailIcon className={iconClass} />, href: `mailto:${site.email}` },
-    {
-      id: "resume",
-      title: "Resume",
-      icon: <FileIcon className="h-3.5 w-3.5" />,
-      href: site.resume,
-      textLabel: true,
-    },
+    { id: "resume", title: "Resume", icon: <FileIcon className={iconClass} />, href: site.resume },
     {
       id: "theme-toggle",
       title: theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
