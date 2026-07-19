@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "LLMs handle only decomposition and synthesis; deterministic Python does the ranking and edge math",
     ],
     stack: ["Python", "FastAPI", "LangGraph", "Elasticsearch", "pgvector", "Claude"],
-    githubUrl: "https://github.com/esingh25/HailMaryRAG",
+    githubUrl: "https://github.com/esingh25/Project-HailMary",
   },
   {
     name: "CiC Operations App",

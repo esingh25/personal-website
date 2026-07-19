@@ -56,7 +56,12 @@ export function Hero() {
         </motion.div>
       </div>
       <motion.div {...fadeUp(0.45)} className="mt-10 flex flex-wrap gap-3">
-        <a href={site.resume} className="pill-btn px-5 py-2.5 text-sm">
+        <a
+          href={site.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pill-btn px-5 py-2.5 text-sm"
+        >
           <FileIcon className="h-4 w-4" />
           View Resume
         </a>
