@@ -36,8 +36,28 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="mx-auto w-full max-w-3xl px-6 pt-24">
+          <ShowcaseHeading
+            id="projects"
+            index="03"
+            badge="My Projects"
+            title="What I've been building"
+          />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {projects.map((project, i) => (
+              <Reveal
+                key={project.name}
+                delay={i * 0.1}
+                className={i === projects.length - 1 ? "sm:col-span-2" : undefined}
+              >
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="education" index="03" title="Education" />
+          <SectionHeading id="education" index="04" title="Education" />
           <Reveal>
             <div className="glass divide-y divide-line rounded-2xl px-6 py-4 sm:px-8">
               {educationEntries.map((entry) => (
@@ -83,7 +103,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="certifications" index="04" title="Certifications" />
+          <SectionHeading id="certifications" index="05" title="Certifications" />
           <div className="grid gap-6 sm:grid-cols-2">
             {certifications.map((cert, i) => (
               <Reveal key={cert.name} delay={i * 0.08}>
@@ -109,7 +129,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="skills" index="05" title="Skills" />
+          <SectionHeading id="skills" index="06" title="Technical Skills" />
           <div className="grid gap-6 sm:grid-cols-2">
             {skillGroups.map((group, i) => (
               <Reveal key={group.label} delay={i * 0.08}>
@@ -120,7 +140,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="interests" index="06" title="Interests" />
+          <SectionHeading id="interests" index="07" title="Interests" />
           <Reveal>
             <ul className="flex flex-wrap gap-2">
               {interests.map((interest) => (
@@ -130,26 +150,6 @@ export default function Home() {
               ))}
             </ul>
           </Reveal>
-        </section>
-
-        <section className="mx-auto w-full max-w-3xl px-6 pt-32">
-          <ShowcaseHeading
-            id="projects"
-            index="07"
-            badge="My Projects"
-            title="What I've been building"
-          />
-          <div className="grid gap-6 sm:grid-cols-2">
-            {projects.map((project, i) => (
-              <Reveal
-                key={project.name}
-                delay={i * 0.1}
-                className={i === projects.length - 1 ? "sm:col-span-2" : undefined}
-              >
-                <ProjectCard project={project} />
-              </Reveal>
-            ))}
-          </div>
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-32">

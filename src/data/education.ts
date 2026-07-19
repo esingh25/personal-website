@@ -42,6 +42,7 @@ export const educationEntries: EducationEntry[] = [
     degree: "High School Diploma",
     location: "Issaquah, WA",
     period: "2021 — 2025",
+    logo: "/logos/ihs.png",
   },
 ];
 
