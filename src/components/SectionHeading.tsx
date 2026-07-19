@@ -11,7 +11,6 @@ export function SectionHeading({ id, title }: SectionHeadingProps) {
     <Reveal>
       <h2 id={id} className="mb-8 font-display text-heading text-ink">
         {title}
-        <span className="text-accent">.</span>
       </h2>
     </Reveal>
   );

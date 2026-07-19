@@ -27,10 +27,7 @@ export function Hero() {
       </motion.p>
       <div className="mt-6 flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
         <motion.h1 {...fadeUp(0.15)} className="font-display text-hero text-ink">
-          Hi, I&apos;m <VariableFontName text="Ekam" />{" "}
-          <span className="wave" aria-hidden="true">
-            👋
-          </span>
+          Hi, I&apos;m <VariableFontName text="Ekam" />
         </motion.h1>
         <motion.div {...fadeUp(0.45)} className="shrink-0">
           {site.photo ? (

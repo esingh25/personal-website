@@ -99,7 +99,7 @@ function FloatingDockMobile({ items, className }: { items: DockItem[]; className
           <motion.div
             id="dock-mobile-menu"
             layoutId="dock-mobile-nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col items-center gap-2"
+            className="absolute inset-x-0 top-full mt-2 flex flex-col items-center gap-2"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -186,10 +186,10 @@ function IconContainer({ mouseX, item }: { mouseX: MotionValue; item: DockItem }
         <AnimatePresence>
           {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
+              initial={{ opacity: 0, y: -10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit whitespace-pre rounded-md border border-line bg-surface px-2 py-0.5 text-xs text-ink"
+              exit={{ opacity: 0, y: -2, x: "-50%" }}
+              className="absolute -bottom-8 left-1/2 w-fit whitespace-pre rounded-md border border-line bg-surface px-2 py-0.5 text-xs text-ink"
             >
               {item.title}
             </motion.div>

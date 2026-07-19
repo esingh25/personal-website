@@ -50,7 +50,7 @@ export function Dock() {
   ];
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4 sm:bottom-6">
+    <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6">
       <div className="pointer-events-auto">
         <FloatingDock items={items} />
       </div>
