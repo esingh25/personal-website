@@ -20,8 +20,8 @@ export default function Home() {
         <Hero />
         <About />
 
-        <section className="mx-auto w-full max-w-2xl px-6 pt-20">
-          <SectionHeading id="experience" title="Work Experience" />
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+          <SectionHeading id="experience" index="02" title="Work Experience" />
           <div className="glass divide-y divide-line rounded-2xl px-6 py-2 sm:px-8">
             {experience.map((item, i) => (
               <Reveal key={item.company} delay={i * 0.08}>
@@ -31,8 +31,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-2xl px-6 pt-20">
-          <SectionHeading id="education" title="Education" />
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+          <SectionHeading id="education" index="03" title="Education" />
           <Reveal>
             <div className="glass rounded-2xl p-6 sm:p-8">
             <div className="flex items-center gap-4">
@@ -64,8 +64,8 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="mx-auto w-full max-w-2xl px-6 pt-20">
-          <SectionHeading id="skills" title="Skills" />
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+          <SectionHeading id="skills" index="04" title="Skills" />
           <div className="grid gap-8 sm:grid-cols-2">
             {skillGroups.map((group, i) => (
               <Reveal key={group.label} delay={i * 0.08}>
@@ -75,9 +75,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-3xl px-6 pt-28">
+        <section className="mx-auto w-full max-w-3xl px-6 pt-32">
           <ShowcaseHeading
             id="projects"
+            index="05"
             badge="My Projects"
             title="What I've been building"
             subtitle="Built with AI, shipped to GitHub. Here are a few of my favorites."
@@ -95,8 +96,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-2xl px-6 pt-28">
-          <ShowcaseHeading id="contact" badge="Contact" title="Get in Touch" />
+        <section className="mx-auto w-full max-w-2xl px-6 pt-32">
+          <ShowcaseHeading id="contact" index="06" badge="Contact" title="Get in Touch" />
           <Reveal>
             <p className="mx-auto -mt-6 max-w-md text-center text-ink-muted">
               Want to chat? Drop me an email at{" "}

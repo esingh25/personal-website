@@ -40,7 +40,13 @@ export function Dock() {
     { id: "github", title: "GitHub", icon: <GitHubIcon className={iconClass} />, href: site.github, external: true },
     { id: "linkedin", title: "LinkedIn", icon: <LinkedInIcon className={iconClass} />, href: site.linkedin, external: true },
     { id: "email", title: "Email", icon: <MailIcon className={iconClass} />, href: `mailto:${site.email}` },
-    { id: "resume", title: "Resume", icon: <FileIcon className={iconClass} />, href: site.resume },
+    {
+      id: "resume",
+      title: "Resume",
+      icon: <FileIcon className="h-3.5 w-3.5" />,
+      href: site.resume,
+      textLabel: true,
+    },
     {
       id: "theme-toggle",
       title: theme === "dark" ? "Switch to light theme" : "Switch to dark theme",

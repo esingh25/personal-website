@@ -4,8 +4,8 @@ import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   return (
-    <section className="mx-auto w-full max-w-2xl px-6 pt-20">
-      <SectionHeading id="about" title="About" />
+    <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+      <SectionHeading id="about" index="01" title="About" />
       <Reveal>
         <p className="text-sm leading-relaxed text-ink-muted sm:text-base">
           I&apos;m studying Computer Science and Mathematics at the{" "}

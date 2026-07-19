@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { site } from "@/data/site";
+import { FileIcon } from "./icons";
 import { VariableFontName } from "./VariableFontName";
 
 export function Hero() {
@@ -55,6 +56,15 @@ export function Hero() {
       <motion.p {...fadeUp(0.3)} className="mt-8 max-w-xl text-lg text-ink-muted sm:text-xl">
         {site.tagline}
       </motion.p>
+      <motion.div {...fadeUp(0.45)} className="mt-10 flex flex-wrap gap-3">
+        <a href={site.resume} className="pill-btn px-5 py-2.5 text-sm">
+          <FileIcon className="h-4 w-4" />
+          View Resume
+        </a>
+        <a href="#contact" className="pill-btn pill-btn-outline px-5 py-2.5 text-sm">
+          Get in Touch
+        </a>
+      </motion.div>
     </section>
   );
 }

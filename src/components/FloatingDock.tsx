@@ -24,6 +24,8 @@ export interface DockItem {
   href?: string;
   onClick?: () => void;
   external?: boolean;
+  /** Render as a labeled text pill instead of an icon circle (e.g. "Resume"). */
+  textLabel?: boolean;
 }
 
 export function FloatingDock({
@@ -146,9 +148,20 @@ function FloatingDockDesktop({ items, className }: { items: DockItem[]; classNam
         className,
       )}
     >
-      {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.id} item={item} />
-      ))}
+      {items.map((item) =>
+        item.textLabel ? (
+          <DockItemShell
+            key={item.id}
+            item={item}
+            className="mb-1 inline-flex items-center gap-1.5 rounded-full border border-accent/50 px-4 py-1.5 font-mono text-xs text-accent transition-colors hover:bg-accent hover:text-bg"
+          >
+            {item.icon}
+            {item.title}
+          </DockItemShell>
+        ) : (
+          <IconContainer mouseX={mouseX} key={item.id} item={item} />
+        ),
+      )}
     </motion.div>
   );
 }
