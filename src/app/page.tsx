@@ -7,6 +7,9 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading, ShowcaseHeading } from "@/components/SectionHeading";
 import { SkillGroupCard } from "@/components/SkillGroupCard";
+import { TiltCard } from "@/components/TiltCard";
+import { ExternalLinkIcon } from "@/components/icons";
+import type { Certification } from "@/data/education";
 import Image from "next/image";
 import { certifications, educationEntries } from "@/data/education";
 import { experience } from "@/data/experience";
@@ -55,6 +58,9 @@ export default function Home() {
                     )}
                     <div className="min-w-0">
                       <h3 className="font-semibold text-ink">{entry.school}</h3>
+                      {entry.subSchool && (
+                        <p className="text-sm text-ink-muted">{entry.subSchool}</p>
+                      )}
                       <p className="text-sm text-ink-muted">{entry.degree}</p>
                     </div>
                     <p className="ml-auto shrink-0 text-sm text-ink-muted">
@@ -70,16 +76,6 @@ export default function Home() {
                       ))}
                     </ul>
                   )}
-                  {entry.school === "University of Washington" && (
-                    <ul className="mt-4 space-y-1.5 text-sm text-ink-muted sm:pl-[3.75rem]">
-                      {certifications.map((cert) => (
-                        <li key={cert.name}>
-                          {cert.name} · {cert.issuer}
-                          {cert.inProgress && <span> (in progress)</span>}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               ))}
             </div>
@@ -87,8 +83,34 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="skills" index="04" title="Skills" />
-          <div className="grid gap-8 sm:grid-cols-2">
+          <SectionHeading id="certifications" index="04" title="Certifications" />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {certifications.map((cert, i) => (
+              <Reveal key={cert.name} delay={i * 0.08}>
+                <TiltCard className="h-full">
+                  {cert.url ? (
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-full flex-col p-6"
+                    >
+                      <CertCardBody cert={cert} linked />
+                    </a>
+                  ) : (
+                    <div className="flex h-full flex-col p-6">
+                      <CertCardBody cert={cert} />
+                    </div>
+                  )}
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+          <SectionHeading id="skills" index="05" title="Skills" />
+          <div className="grid gap-6 sm:grid-cols-2">
             {skillGroups.map((group, i) => (
               <Reveal key={group.label} delay={i * 0.08}>
                 <SkillGroupCard group={group} />
@@ -98,7 +120,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
-          <SectionHeading id="interests" index="05" title="Interests" />
+          <SectionHeading id="interests" index="06" title="Interests" />
           <Reveal>
             <ul className="flex flex-wrap gap-2">
               {interests.map((interest) => (
@@ -113,7 +135,7 @@ export default function Home() {
         <section className="mx-auto w-full max-w-3xl px-6 pt-32">
           <ShowcaseHeading
             id="projects"
-            index="06"
+            index="07"
             badge="My Projects"
             title="What I've been building"
           />
@@ -131,7 +153,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-32">
-          <ShowcaseHeading id="contact" index="07" badge="Contact" title="Get in Touch" />
+          <ShowcaseHeading id="contact" index="08" badge="Contact" title="Get in Touch" />
           <Reveal>
             <p className="mx-auto -mt-6 max-w-md text-center text-ink-muted">
               Email{" "}
@@ -149,6 +171,23 @@ export default function Home() {
       </main>
       <Footer />
       <Dock />
+    </>
+  );
+}
+
+function CertCardBody({ cert, linked }: { cert: Certification; linked?: boolean }) {
+  return (
+    <>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="text-sm font-semibold text-ink">{cert.name}</h3>
+        {linked && (
+          <ExternalLinkIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-ink-muted" />
+        )}
+      </div>
+      <p className="mt-2 text-sm text-ink-muted">
+        {cert.issuer}
+        {cert.inProgress && <span> · in progress</span>}
+      </p>
     </>
   );
 }

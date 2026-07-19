@@ -1,5 +1,7 @@
 export interface EducationEntry {
   school: string;
+  /** School-within-a-school credit line (e.g. the Allen School at UW). */
+  subSchool?: string;
   degree: string;
   location: string;
   period?: string;
@@ -13,11 +15,14 @@ export interface Certification {
   name: string;
   issuer: string;
   inProgress: boolean;
+  /** Link to the credential; cards render as plain divs until this is set. */
+  url?: string;
 }
 
 export const educationEntries: EducationEntry[] = [
   {
     school: "University of Washington",
+    subSchool: "Paul G. Allen School of Computer Science & Engineering",
     degree: "B.S. Computer Science & B.A. Mathematics",
     location: "Seattle, WA",
     gpa: "3.76 / 4.0",
