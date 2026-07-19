@@ -9,37 +9,39 @@ export function About() {
       <Reveal>
         <div className="space-y-4 text-sm leading-relaxed text-ink-muted sm:text-base">
           <p>
-            I study Computer Science and Mathematics at the{" "}
-            <a href="https://www.washington.edu" target="_blank" rel="noopener noreferrer" className="prose-link">
-              University of Washington
-            </a>
-            . Most of my time goes into{" "}
+            My Nani taught me to make dahi when I was seven. Every morning at 4:30 we cut open
+            pouches of milk, and most mornings I poured half of mine onto the floor. She never
+            scolded me. She handed me the next bag and said, try again. By the end of that summer
+            I could cut and pour without spilling a drop.
+          </p>
+          <p>
+            I chase that feeling in everything I learn. Sunday pancakes with my mom went from
+            scrambled to golden after enough failed flips. My Rubik&apos;s cube times fell the same
+            way, and so did my lap times once I started studying racing mechanics in Forza.
+            Repetition and small corrections get me there every time.
+          </p>
+          <p>
+            Software gives me the fastest version of that loop I have found. I build{" "}
             <a href="#projects" className="prose-link">
               AI agents
             </a>
-            : a RAG system that researches football questions, a code reviewer that comments on
-            pull requests, and a dashboard that runs seven services over MCP. All of it is on{" "}
+            , watch them break, fix them, and ship the result to{" "}
             <a href={site.github} target="_blank" rel="noopener noreferrer" className="prose-link">
-              my GitHub
+              GitHub
             </a>
-            . This summer I&apos;m interning at{" "}
+            . That cycle is why I chose Computer Science and Mathematics at the{" "}
+            <a href="https://www.washington.edu" target="_blank" rel="noopener noreferrer" className="prose-link">
+              University of Washington
+            </a>
+            , and it is where the{" "}
             <a href="#experience" className="prose-link">
-              KleoKlaw
-            </a>
-            , building the SMS pipeline that lets people apply to jobs over text.
-          </p>
-          <p>
-            I also mentor with{" "}
-            <a href="#experience" className="prose-link">
-              Changemakers in Computing
-            </a>
-            , where I taught 41 high school students to build and deploy their first websites. When
-            I&apos;m not writing code I&apos;m playing pickleball, cooking, or solving a
-            Rubik&apos;s cube. The full list is in{" "}
+              work below
+            </a>{" "}
+            comes from. The{" "}
             <a href="#interests" className="prose-link">
               interests
-            </a>
-            .
+            </a>{" "}
+            cover the rest of my day.
           </p>
         </div>
       </Reveal>
