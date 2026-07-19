@@ -1,28 +1,30 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design system — semantic tokens with light & dark themes.
-   The inline script in layout.tsx stamps data-theme on <html> before paint;
-   the media query below covers the no-JS fallback only.
+   Design system — deep-petrol aurora palette, dark by default.
+   Light is the explicit opt-in via the dock toggle ([data-theme="light"]).
    --------------------------------------------------------------------------- */
-/* Dark is the default; light is the explicit opt-in via the dock toggle. */
 :root {
-  --bg: #141412;
-  --surface: #1c1c19;
-  --line: #2b2a26;
-  --ink: #ece8e1;
-  --ink-muted: #a5a199;
-  --accent: #d4a373;
+  --bg: #0c1213;
+  --surface: #131b1c;
+  --line: #233031;
+  --ink: #e9efed;
+  --ink-muted: #94a6a2;
+  --accent: #3fd8c2;
+  --spotlight: rgba(63, 216, 194, 0.14);
+  --glass: rgba(19, 27, 28, 0.66);
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #fcfcfb;
-  --surface: #f5f4f1;
-  --line: #e6e4de;
-  --ink: #1c1b18;
-  --ink-muted: #6d6a63;
-  --accent: #9a5b26;
+  --bg: #f2f7f5;
+  --surface: #ffffff;
+  --line: #d3e0dc;
+  --ink: #122021;
+  --ink-muted: #4e6360;
+  --accent: #0e7568;
+  --spotlight: rgba(14, 117, 104, 0.1);
+  --glass: rgba(255, 255, 255, 0.6);
   color-scheme: light;
 }
 
@@ -34,13 +36,17 @@
   --color-ink-muted: var(--ink-muted);
   --color-accent: var(--accent);
 
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-plex);
+  --font-mono: var(--font-jetbrains);
 
-  /* Type scale — hero is bold sans, headings step down from there */
-  --text-hero: clamp(2.5rem, 5vw + 0.5rem, 3.5rem);
-  --text-hero--line-height: 1.1;
-  --text-showcase: clamp(2rem, 4vw + 0.5rem, 2.75rem);
-  --text-showcase--line-height: 1.15;
+  /* Type scale — big jumps, not timid steps */
+  --text-hero: clamp(3.5rem, 8vw + 1rem, 6.75rem);
+  --text-hero--line-height: 0.98;
+  --text-showcase: clamp(2.25rem, 5vw + 0.5rem, 3.5rem);
+  --text-showcase--line-height: 1.08;
+  --text-heading: 1.75rem;
+  --text-heading--line-height: 1.15;
 }
 
 /* ---------------------------------------------------------------------------
@@ -75,37 +81,32 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-   Components — shared primitives for the resume-style layout
+   Components
    --------------------------------------------------------------------------- */
 @layer components {
-  .card {
-    border-radius: 1rem;
+  /* Frosted panel that lets the aurora glow through */
+  .glass {
+    background-color: var(--glass);
     border: 1px solid var(--color-line);
-    background-color: var(--color-surface);
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease,
-      background-color 0.3s ease;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .card-lift:hover {
-      transform: translateY(-4px);
-      border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
-    }
+  .glass:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
   }
 
   .chip {
     display: inline-block;
     border-radius: 9999px;
     border: 1px solid var(--color-line);
-    background-color: var(--color-surface);
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
     padding: 0.2rem 0.7rem;
-    font-size: 0.8125rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
     color: var(--color-ink-muted);
-    transition:
-      color 0.2s ease,
-      border-color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
   .chip:hover {
@@ -113,7 +114,6 @@ body {
     color: var(--color-ink);
   }
 
-  /* Solid pill button — inverts naturally with the theme */
   .pill-btn {
     display: inline-flex;
     align-items: center;
@@ -124,7 +124,7 @@ body {
     padding: 0.35rem 0.85rem;
     font-size: 0.8125rem;
     font-weight: 500;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.2s ease;
   }
 
   .pill-btn:hover {
@@ -143,18 +143,19 @@ body {
     color: var(--color-accent);
   }
 
-  /* Small inverted badge above showcase headings ("My Projects", "Contact") */
+  /* Mono eyebrow label — replaces the old inverted badge pill */
   .badge-pill {
     display: inline-block;
     border-radius: 9999px;
-    background-color: var(--color-ink);
-    color: var(--color-bg);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+    color: var(--color-accent);
     padding: 0.25rem 0.9rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
-  /* Inline prose links, reference-style: underlined, bold-ish */
   .prose-link {
     color: var(--color-ink);
     font-weight: 600;
@@ -168,7 +169,6 @@ body {
     color: var(--color-accent);
   }
 
-  /* Initials circle used where the reference shows logos */
   .icon-circle {
     display: flex;
     align-items: center;
@@ -178,7 +178,9 @@ body {
     height: 2.75rem;
     border-radius: 9999px;
     border: 1px solid var(--color-line);
-    background-color: var(--color-surface);
+    background-color: var(--glass);
+    backdrop-filter: blur(8px);
+    font-family: var(--font-mono), monospace;
     font-size: 0.8125rem;
     font-weight: 700;
     color: var(--color-ink-muted);

@@ -22,7 +22,7 @@ export default function Home() {
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-20">
           <SectionHeading id="experience" title="Work Experience" />
-          <div className="divide-y divide-line">
+          <div className="glass divide-y divide-line rounded-2xl px-6 py-2 sm:px-8">
             {experience.map((item, i) => (
               <Reveal key={item.company} delay={i * 0.08}>
                 <ExperienceItem item={item} />
@@ -34,6 +34,7 @@ export default function Home() {
         <section className="mx-auto w-full max-w-2xl px-6 pt-20">
           <SectionHeading id="education" title="Education" />
           <Reveal>
+            <div className="glass rounded-2xl p-6 sm:p-8">
             <div className="flex items-center gap-4">
               <span aria-hidden="true" className="icon-circle">
                 UW
@@ -59,6 +60,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            </div>
           </Reveal>
         </section>
 

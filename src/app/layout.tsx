@@ -1,11 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { MotionProvider } from "@/components/MotionProvider";
 import { site } from "@/data/site";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+});
+
+const plex = IBM_Plex_Sans({
+  variable: "--font-plex",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
 });
 
@@ -21,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#141412",
+  themeColor: "#0c1213",
 };
 
 // Runs before paint. The site opens dark by default; a stored explicit choice
@@ -34,9 +47,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${plex.variable} ${jetbrains.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <AuroraBackground />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { site } from "@/data/site";
+import { VariableFontName } from "./VariableFontName";
 
 export function Hero() {
   // Reduced motion is handled globally by MotionProvider; identical props on
@@ -14,38 +15,49 @@ export function Hero() {
   });
 
   return (
-    <section id="top" className="mx-auto flex w-full max-w-2xl flex-col-reverse items-start gap-8 px-6 pt-20 sm:flex-row sm:items-center sm:justify-between sm:pt-28">
-      <div className="max-w-md">
-        <motion.h1 {...fadeUp(0)} className="text-hero font-extrabold tracking-tight text-ink">
-          Hi, I&apos;m Ekam{" "}
+    <section
+      id="top"
+      className="mx-auto flex min-h-svh w-full max-w-4xl flex-col justify-center px-6 pt-16"
+    >
+      <motion.p
+        {...fadeUp(0)}
+        className="font-mono text-xs uppercase tracking-[0.28em] text-accent sm:text-sm"
+      >
+        CS &amp; Math @ University of Washington
+      </motion.p>
+      <div className="mt-6 flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
+        <motion.h1 {...fadeUp(0.15)} className="font-display text-hero text-ink">
+          Hi, I&apos;m <VariableFontName text="Ekam" />{" "}
           <span className="wave" aria-hidden="true">
             👋
           </span>
         </motion.h1>
-        <motion.p {...fadeUp(0.15)} className="mt-4 text-lg text-ink-muted">
-          CS &amp; Math student at the University of Washington. {site.tagline}
-        </motion.p>
+        <motion.div {...fadeUp(0.45)} className="shrink-0">
+          {site.photo ? (
+            <div className="glass rounded-full p-2">
+              <Image
+                src={site.photo}
+                alt={`Portrait of ${site.name}`}
+                width={144}
+                height={144}
+                priority
+                className="h-32 w-32 rounded-full object-cover sm:h-36 sm:w-36"
+              />
+            </div>
+          ) : (
+            <div
+              role="img"
+              aria-label={`Placeholder portrait for ${site.name}`}
+              className="glass flex h-32 w-32 items-center justify-center rounded-full font-mono text-3xl font-bold text-ink-muted sm:h-36 sm:w-36"
+            >
+              ES
+            </div>
+          )}
+        </motion.div>
       </div>
-      <motion.div {...fadeUp(0.3)} className="shrink-0">
-        {site.photo ? (
-          <Image
-            src={site.photo}
-            alt={`Portrait of ${site.name}`}
-            width={128}
-            height={128}
-            priority
-            className="h-28 w-28 rounded-full border border-line object-cover sm:h-32 sm:w-32"
-          />
-        ) : (
-          <div
-            role="img"
-            aria-label={`Placeholder portrait for ${site.name}`}
-            className="flex h-28 w-28 items-center justify-center rounded-full border border-line bg-surface text-3xl font-bold text-ink-muted sm:h-32 sm:w-32"
-          >
-            ES
-          </div>
-        )}
-      </motion.div>
+      <motion.p {...fadeUp(0.3)} className="mt-8 max-w-xl text-lg text-ink-muted sm:text-xl">
+        {site.tagline}
+      </motion.p>
     </section>
   );
 }

@@ -1,10 +1,12 @@
 import type { Project } from "@/data/projects";
 import { ExternalLinkIcon, GitHubIcon } from "./icons";
+import { SpotlightCard } from "./SpotlightCard";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="card card-lift flex h-full flex-col p-6">
-      <h3 className="text-lg font-bold text-ink">{project.name}</h3>
+    <SpotlightCard className="h-full">
+      <article className="flex h-full flex-col p-6">
+        <h3 className="font-display text-xl text-ink">{project.name}</h3>
       <p className="mt-2 text-sm leading-relaxed text-ink-muted">{project.description}</p>
       <ul className="mt-4 space-y-2 text-sm text-ink-muted">
         {project.highlights.map((highlight) => (
@@ -50,6 +52,7 @@ export function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-    </article>
+      </article>
+    </SpotlightCard>
   );
 }
