@@ -48,7 +48,11 @@ export default function Home() {
               <Reveal
                 key={project.name}
                 delay={i * 0.1}
-                className={i === projects.length - 1 ? "sm:col-span-2" : undefined}
+                className={
+                  i === projects.length - 1 && projects.length % 2 === 1
+                    ? "sm:col-span-2"
+                    : undefined
+                }
               >
                 <ProjectCard project={project} />
               </Reveal>

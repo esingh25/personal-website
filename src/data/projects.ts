@@ -35,6 +35,16 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/esingh25/HailMaryRAG",
   },
   {
+    name: "CiC Operations App",
+    description:
+      "An internal operations console for the Changemakers in Computing mentorship program: run-of-show, task tracking, and the mentor roster in one single-file React tool backed by persistent storage.",
+    highlights: [
+      "Consolidated three scattered workflows (event run-of-show, task tracking, mentor roster) into one tool the whole mentor team runs from a single file",
+      "Coordinated grading of 19 mentee applications, weekly EdStem lessons, and alumni outreach for a 41-student cohort",
+    ],
+    stack: ["React", "JavaScript", "localStorage"],
+  },
+  {
     name: "Personal AI Dashboard",
     description:
       "One console for seven services: Notion, Slack, Canvas LMS, Google Calendar, Gmail, GitHub, and Canva. The integrations run over MCP using the Claude Agent SDK.",
