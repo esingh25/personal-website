@@ -88,12 +88,50 @@ export function AuroraBackground() {
 
     const orbs = Array.from({ length: ORB_COUNT }, () => new Orb());
 
+    // Cursor orb: trails the pointer like the card spotlights, only on
+    // devices that actually hover a cursor.
+    const canHover = window.matchMedia("(hover: hover)").matches;
+    const cursor = { x: 0, y: 0, targetX: 0, targetY: 0, strength: 0 };
+    const onPointerMove = (e: PointerEvent) => {
+      cursor.targetX = e.clientX;
+      cursor.targetY = e.clientY;
+      if (cursor.strength === 0) {
+        cursor.x = e.clientX;
+        cursor.y = e.clientY;
+      }
+      cursor.strength = 1;
+    };
+    const onPointerLeave = () => {
+      cursor.strength = 0;
+    };
+    if (canHover) {
+      window.addEventListener("pointermove", onPointerMove);
+      document.documentElement.addEventListener("pointerleave", onPointerLeave);
+    }
+
+    const drawCursorOrb = () => {
+      if (cursor.strength <= 0.01) return;
+      cursor.x += (cursor.targetX - cursor.x) * 0.08;
+      cursor.y += (cursor.targetY - cursor.y) * 0.08;
+      const color = palette()[0];
+      const a = (isLight() ? 0.12 : 0.2) * cursor.strength;
+      const radius = 280;
+      const gradient = ctx.createRadialGradient(cursor.x, cursor.y, 0, cursor.x, cursor.y, radius);
+      gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${a})`);
+      gradient.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`);
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(cursor.x, cursor.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
     const drawFrame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       orbs.forEach((orb) => {
         orb.update();
         orb.draw();
       });
+      drawCursorOrb();
     };
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -116,6 +154,10 @@ export function AuroraBackground() {
 
     return () => {
       window.removeEventListener("resize", setCanvasSize);
+      if (canHover) {
+        window.removeEventListener("pointermove", onPointerMove);
+        document.documentElement.removeEventListener("pointerleave", onPointerLeave);
+      }
       cancelAnimationFrame(animationFrameId);
       observer.disconnect();
     };

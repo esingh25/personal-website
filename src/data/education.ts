@@ -1,9 +1,12 @@
-export interface Education {
+export interface EducationEntry {
   school: string;
   degree: string;
   location: string;
-  gpa: string;
-  coursework: string[];
+  period?: string;
+  gpa?: string;
+  coursework?: string[];
+  /** Path under /public to a small logo; entries without one render initials. */
+  logo?: string;
 }
 
 export interface Certification {
@@ -12,21 +15,30 @@ export interface Certification {
   inProgress: boolean;
 }
 
-export const education: Education = {
-  school: "University of Washington",
-  degree: "B.S. Computer Science & B.A. Mathematics",
-  location: "Seattle, WA",
-  gpa: "3.76 / 4.0",
-  coursework: [
-    "Foundations of Computing I",
-    "Hardware & Software Interface",
-    "Intro to CS Programming II & III",
-    "Advanced Multivariable Calculus",
-    "Matrix Algebra",
-    "Elements of Statistical Methods",
-    "Data Structures & Algorithms (UC San Diego, Coursera)",
-  ],
-};
+export const educationEntries: EducationEntry[] = [
+  {
+    school: "University of Washington",
+    degree: "B.S. Computer Science & B.A. Mathematics",
+    location: "Seattle, WA",
+    gpa: "3.76 / 4.0",
+    logo: "/logos/uw.png",
+    coursework: [
+      "Foundations of Computing I",
+      "Hardware & Software Interface",
+      "Intro to CS Programming II & III",
+      "Advanced Multivariable Calculus",
+      "Matrix Algebra",
+      "Elements of Statistical Methods",
+      "Data Structures & Algorithms (UC San Diego, Coursera)",
+    ],
+  },
+  {
+    school: "Issaquah High School",
+    degree: "High School Diploma",
+    location: "Issaquah, WA",
+    period: "2021 — 2025",
+  },
+];
 
 export const certifications: Certification[] = [
   { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", inProgress: true },

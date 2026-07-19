@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { certifications, education } from "./education";
+import { certifications, educationEntries } from "./education";
 import { experience } from "./experience";
 import { projects } from "./projects";
 import { site } from "./site";
@@ -63,14 +63,24 @@ describe("experience data", () => {
 });
 
 describe("education data", () => {
-  it("shows both degrees without a graduation date", () => {
-    expect(education.degree).toBe("B.S. Computer Science & B.A. Mathematics");
-    expect(JSON.stringify(education)).not.toMatch(/20\d\d/);
+  it("lists UW and Issaquah High School", () => {
+    const schools = educationEntries.map((e) => e.school);
+    expect(schools).toEqual(["University of Washington", "Issaquah High School"]);
+  });
+
+  it("shows both UW degrees without a graduation date", () => {
+    const uw = educationEntries[0];
+    expect(uw.degree).toBe("B.S. Computer Science & B.A. Mathematics");
+    expect(JSON.stringify(uw)).not.toMatch(/20\d\d/);
+  });
+
+  it("dates the high school entry", () => {
+    expect(educationEntries[1].period).toMatch(/2021.*2025/);
   });
 
   it("includes the UCSD Coursera course", () => {
     expect(
-      education.coursework.some((c) => c.includes("UC San Diego")),
+      educationEntries[0].coursework?.some((c) => c.includes("UC San Diego")),
     ).toBe(true);
   });
 

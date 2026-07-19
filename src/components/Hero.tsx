@@ -18,19 +18,21 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="mx-auto flex min-h-svh w-full max-w-4xl flex-col justify-center px-6 pt-16"
+      className="mx-auto flex min-h-[55svh] w-full max-w-4xl flex-col justify-center px-6 pt-24"
     >
-      <motion.p
-        {...fadeUp(0)}
-        className="font-mono text-xs uppercase tracking-[0.28em] text-accent sm:text-sm"
-      >
-        CS &amp; Math @ University of Washington
-      </motion.p>
-      <div className="mt-6 flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
-        <motion.h1 {...fadeUp(0.15)} className="font-display text-hero text-ink">
-          Hi, I&apos;m <VariableFontName text="Ekam" />
-        </motion.h1>
-        <motion.div {...fadeUp(0.45)} className="shrink-0">
+      <div className="flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <motion.h1 {...fadeUp(0)} className="font-display text-hero text-ink">
+            Hi, I&apos;m <VariableFontName text="Ekam" />
+          </motion.h1>
+          <motion.p
+            {...fadeUp(0.15)}
+            className="mt-5 font-mono text-xs uppercase tracking-[0.28em] text-accent sm:text-sm"
+          >
+            CS &amp; Math @ University of Washington
+          </motion.p>
+        </div>
+        <motion.div {...fadeUp(0.3)} className="shrink-0">
           {site.photo ? (
             <div className="glass rounded-full p-2">
               <Image
@@ -53,9 +55,6 @@ export function Hero() {
           )}
         </motion.div>
       </div>
-      <motion.p {...fadeUp(0.3)} className="mt-8 max-w-xl text-lg text-ink-muted sm:text-xl">
-        {site.tagline}
-      </motion.p>
       <motion.div {...fadeUp(0.45)} className="mt-10 flex flex-wrap gap-3">
         <a href={site.resume} className="pill-btn px-5 py-2.5 text-sm">
           <FileIcon className="h-4 w-4" />

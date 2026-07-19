@@ -7,7 +7,8 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading, ShowcaseHeading } from "@/components/SectionHeading";
 import { SkillGroupCard } from "@/components/SkillGroupCard";
-import { certifications, education } from "@/data/education";
+import Image from "next/image";
+import { certifications, educationEntries } from "@/data/education";
 import { experience } from "@/data/experience";
 import { interests } from "@/data/interests";
 import { projects } from "@/data/projects";
@@ -23,7 +24,7 @@ export default function Home() {
 
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
           <SectionHeading id="experience" index="02" title="Work Experience" />
-          <div className="glass divide-y divide-line rounded-2xl px-6 py-2 sm:px-8">
+          <div className="glass divide-y divide-line rounded-2xl px-6 py-4 sm:px-8">
             {experience.map((item, i) => (
               <Reveal key={item.company} delay={i * 0.08}>
                 <ExperienceItem item={item} />
@@ -35,32 +36,52 @@ export default function Home() {
         <section className="mx-auto w-full max-w-2xl px-6 pt-24">
           <SectionHeading id="education" index="03" title="Education" />
           <Reveal>
-            <div className="glass rounded-2xl p-6 sm:p-8">
-            <div className="flex items-center gap-4">
-              <span aria-hidden="true" className="icon-circle">
-                UW
-              </span>
-              <div className="min-w-0">
-                <h3 className="font-semibold text-ink">{education.school}</h3>
-                <p className="text-sm text-ink-muted">{education.degree}</p>
-              </div>
-              <p className="ml-auto shrink-0 text-sm text-ink-muted">GPA {education.gpa}</p>
-            </div>
-            <ul className="mt-4 flex flex-wrap gap-2 sm:pl-[3.75rem]">
-              {education.coursework.map((course) => (
-                <li key={course} className="chip text-xs">
-                  {course}
-                </li>
+            <div className="glass divide-y divide-line rounded-2xl px-6 py-4 sm:px-8">
+              {educationEntries.map((entry) => (
+                <div key={entry.school} className="py-6 first:pt-2 last:pb-2">
+                  <div className="flex items-center gap-4">
+                    {entry.logo ? (
+                      <span className="icon-circle overflow-hidden bg-white">
+                        <Image src={entry.logo} alt={`${entry.school} logo`} width={44} height={44} className="h-7 w-7 object-contain" />
+                      </span>
+                    ) : (
+                      <span aria-hidden="true" className="icon-circle">
+                        {entry.school
+                          .split(/\s+/)
+                          .slice(0, 2)
+                          .map((word) => word[0])
+                          .join("")}
+                      </span>
+                    )}
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-ink">{entry.school}</h3>
+                      <p className="text-sm text-ink-muted">{entry.degree}</p>
+                    </div>
+                    <p className="ml-auto shrink-0 text-sm text-ink-muted">
+                      {entry.period ?? (entry.gpa ? `GPA ${entry.gpa}` : "")}
+                    </p>
+                  </div>
+                  {entry.coursework && (
+                    <ul className="mt-4 flex flex-wrap gap-2 sm:pl-[3.75rem]">
+                      {entry.coursework.map((course) => (
+                        <li key={course} className="chip text-xs">
+                          {course}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {entry.school === "University of Washington" && (
+                    <ul className="mt-4 space-y-1.5 text-sm text-ink-muted sm:pl-[3.75rem]">
+                      {certifications.map((cert) => (
+                        <li key={cert.name}>
+                          {cert.name} · {cert.issuer}
+                          {cert.inProgress && <span> (in progress)</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               ))}
-            </ul>
-            <ul className="mt-4 space-y-1.5 text-sm text-ink-muted sm:pl-[3.75rem]">
-              {certifications.map((cert) => (
-                <li key={cert.name}>
-                  {cert.name} · {cert.issuer}
-                  {cert.inProgress && <span> (in progress)</span>}
-                </li>
-              ))}
-            </ul>
             </div>
           </Reveal>
         </section>
@@ -95,7 +116,6 @@ export default function Home() {
             index="06"
             badge="My Projects"
             title="What I've been building"
-            subtitle="Three AI projects, all with source on GitHub."
           />
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((project, i) => (

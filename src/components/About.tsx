@@ -3,7 +3,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   return (
-    <section className="mx-auto w-full max-w-2xl px-6 pt-24">
+    <section className="mx-auto w-full max-w-2xl px-6 pt-16">
       <SectionHeading id="about" index="01" title="About" />
       <Reveal>
         <div className="space-y-4 text-sm leading-relaxed text-ink-muted sm:text-base">

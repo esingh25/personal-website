@@ -4,6 +4,8 @@ export interface Experience {
   location: string;
   period: string;
   bullets: string[];
+  /** Path under /public to a small logo; entries without one render initials. */
+  logo?: string;
 }
 
 export const experience: Experience[] = [
@@ -33,6 +35,7 @@ export const experience: Experience[] = [
     role: "Software Engineering Intern",
     location: "Bellevue, WA",
     period: "June 2024 — August 2024",
+    logo: "/logos/capgemini.png",
     bullets: [
       "Developed an internal Azure AI chatbot that parses and summarizes large legal contracts for enterprise clients, using LangChain and Azure Cognitive Services.",
       "Shipped production-ready features in 8 weeks, collaborating daily with senior engineers across code reviews, stand-ups, and design sessions.",
