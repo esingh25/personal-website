@@ -95,7 +95,7 @@ export default function Home() {
             index="06"
             badge="My Projects"
             title="What I've been building"
-            subtitle="Built with AI, shipped to GitHub. Here are a few of my favorites."
+            subtitle="Three AI projects, all with source on GitHub."
           />
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((project, i) => (
@@ -114,15 +114,15 @@ export default function Home() {
           <ShowcaseHeading id="contact" index="07" badge="Contact" title="Get in Touch" />
           <Reveal>
             <p className="mx-auto -mt-6 max-w-md text-center text-ink-muted">
-              Want to chat? Drop me an email at{" "}
+              Email{" "}
               <a href={`mailto:${site.email}`} className="prose-link">
                 {site.email}
               </a>{" "}
-              or find me on{" "}
+              or message me on{" "}
               <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="prose-link">
                 LinkedIn
               </a>
-              , and I&apos;ll reply as soon as I can.
+              . I answer both.
             </p>
           </Reveal>
         </section>

@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     name: "Claude PR Reviewer",
     description:
-      "An AI-powered GitHub Action that reviews pull request diffs with cross-file context and posts inline comments via the GitHub REST API — across GitHub, GitLab, and Bitbucket.",
+      "A GitHub Action that reviews pull request diffs with cross-file context and posts inline comments through the REST API. Works on GitHub, GitLab, and Bitbucket.",
     highlights: [
       "99% statement coverage over 52 automated tests behind an 80%-gated CI pipeline",
       "Hardened against prompt-injection and denial-of-wallet attacks",
@@ -26,10 +26,10 @@ export const projects: Project[] = [
   {
     name: "HailMaryRAG",
     description:
-      "An agentic RAG assistant that decomposes natural-language NFL and college football questions, then runs hybrid retrieval across an Elasticsearch index, a vector database, and live feeds to synthesize grounded, cited research reports.",
+      "A RAG assistant that answers NFL and college football questions. It breaks each question down, runs hybrid retrieval across Elasticsearch, a vector database, and live feeds, then writes a cited research report.",
     highlights: [
       "LangGraph pipeline (decompose → retrieve → rerank → synthesize) with a citation guard and per-query cost circuit breakers",
-      "LLMs restricted to decomposition and synthesis — deterministic Python handles all ranking and edge math",
+      "LLMs handle only decomposition and synthesis; deterministic Python does the ranking and edge math",
     ],
     stack: ["Python", "FastAPI", "LangGraph", "Elasticsearch", "pgvector", "Claude"],
     githubUrl: "https://github.com/esingh25/HailMaryRAG",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     name: "Personal AI Dashboard",
     description:
-      "A dashboard unifying seven services — Notion, Slack, Canvas LMS, Google Calendar, Gmail, GitHub, and Canva — in one console, with integrations wired over MCP using the Claude Agent SDK.",
+      "One console for seven services: Notion, Slack, Canvas LMS, Google Calendar, Gmail, GitHub, and Canva. The integrations run over MCP using the Claude Agent SDK.",
     highlights: [
       "Sync decoupled from render, so widget refreshes cost zero model calls",
       "Work routed across three model tiers (Haiku for bulk sync, Sonnet for briefs, Opus for chat) to bound API cost",

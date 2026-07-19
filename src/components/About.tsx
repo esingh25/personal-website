@@ -9,34 +9,35 @@ export function About() {
       <Reveal>
         <div className="space-y-4 text-sm leading-relaxed text-ink-muted sm:text-base">
           <p>
-            I&apos;m studying Computer Science and Mathematics at the{" "}
+            I study Computer Science and Mathematics at the{" "}
             <a href="https://www.washington.edu" target="_blank" rel="noopener noreferrer" className="prose-link">
               University of Washington
             </a>
-            . I build things with AI —{" "}
+            . Most of my time goes into{" "}
             <a href="#projects" className="prose-link">
-              agentic RAG systems, AI code review tools, and MCP-powered dashboards
-            </a>{" "}
-            — and everything I ship lands on{" "}
+              AI agents
+            </a>
+            : a RAG system that researches football questions, a code reviewer that comments on
+            pull requests, and a dashboard that runs seven services over MCP. All of it is on{" "}
             <a href={site.github} target="_blank" rel="noopener noreferrer" className="prose-link">
               my GitHub
             </a>
-            . Right now I&apos;m a{" "}
+            . This summer I&apos;m interning at{" "}
             <a href="#experience" className="prose-link">
-              backend engineering intern at KleoKlaw
+              KleoKlaw
             </a>
-            , where I engineer the SMS pipeline that lets people apply to jobs entirely over text.
+            , building the SMS pipeline that lets people apply to jobs over text.
           </p>
           <p>
-            The other half of my week belongs to people: as a{" "}
+            I also mentor with{" "}
             <a href="#experience" className="prose-link">
-              Changemakers in Computing mentor
-            </a>{" "}
-            I taught 41 high-school students from underrepresented backgrounds to build and deploy
-            their first websites. Off the clock you&apos;ll find me on a pickleball court, behind a
-            stove, or solving a Rubik&apos;s cube faster than you&apos;d expect —{" "}
+              Changemakers in Computing
+            </a>
+            , where I taught 41 high school students to build and deploy their first websites. When
+            I&apos;m not writing code I&apos;m playing pickleball, cooking, or solving a
+            Rubik&apos;s cube. The full list is in{" "}
             <a href="#interests" className="prose-link">
-              the full list is below
+              interests
             </a>
             .
           </p>

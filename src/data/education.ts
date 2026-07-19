@@ -24,7 +24,7 @@ export const education: Education = {
     "Advanced Multivariable Calculus",
     "Matrix Algebra",
     "Elements of Statistical Methods",
-    "Data Structures & Algorithms — UC San Diego (Coursera)",
+    "Data Structures & Algorithms (UC San Diego, Coursera)",
   ],
 };
 

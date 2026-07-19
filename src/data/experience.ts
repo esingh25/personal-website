@@ -13,7 +13,7 @@ export const experience: Experience[] = [
     location: "Seattle, WA",
     period: "June 2026 — Present",
     bullets: [
-      "Engineered the inbound SMS pipeline for an AI job-search agent — a Twilio webhook handler and an 8-tool agent loop with a Claude Haiku intent classifier that lets users apply to jobs end-to-end over text.",
+      "Engineered the inbound SMS pipeline for an AI job-search agent: a Twilio webhook handler and an 8-tool agent loop with a Claude Haiku intent classifier that lets users apply to jobs end-to-end over text.",
       "Built a job-ingestion layer that normalizes postings from Greenhouse, Lever, and Workday into one unified schema feeding the agent's match search.",
       "Integrated the Ashby ATS to automate application submission and added a TOCTOU-safe confirmation store for pending actions.",
     ],
@@ -24,8 +24,8 @@ export const experience: Experience[] = [
     location: "Seattle, WA",
     period: "March 2026 — Present",
     bullets: [
-      "Taught 41 high-school students from underrepresented and first-generation backgrounds HTML, CSS, JavaScript, applied AI, and tech ethics — guiding each to build and deploy a personal website.",
-      "Built a CiC operations app — a single-file React tool with run-of-show, task-tracker, and mentor-roster tabs backed by persistent storage — to coordinate grading of 19 applications, EdStem lessons, and alumni outreach.",
+      "Taught 41 high-school students from underrepresented and first-generation backgrounds HTML, CSS, JavaScript, applied AI, and tech ethics, and guided each one to build and deploy a personal website.",
+      "Built a CiC operations app, a single-file React tool with run-of-show, task-tracker, and mentor-roster tabs backed by persistent storage, to coordinate grading of 19 applications, EdStem lessons, and alumni outreach.",
     ],
   },
   {
