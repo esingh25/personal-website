@@ -30,7 +30,7 @@ export default function Home() {
           <div className="glass divide-y divide-line rounded-2xl px-6 py-4 sm:px-8">
             {experience.map((item, i) => (
               <Reveal key={item.company} delay={i * 0.08}>
-                <ExperienceItem item={item} />
+                <ExperienceItem item={item} defaultOpen={i === 0} />
               </Reveal>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function Home() {
                   <div className="flex items-center gap-4">
                     {entry.logo ? (
                       <span className="icon-circle overflow-hidden bg-white">
-                        <Image src={entry.logo} alt={`${entry.school} logo`} width={44} height={44} className="h-7 w-7 object-contain" />
+                        <Image src={entry.logo} alt={`${entry.school} logo`} width={44} height={44} unoptimized loading="eager" className="h-7 w-7 object-contain" />
                       </span>
                     ) : (
                       <span aria-hidden="true" className="icon-circle">

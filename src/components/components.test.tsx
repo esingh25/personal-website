@@ -36,7 +36,7 @@ describe("ProjectCard", () => {
 describe("ExperienceItem", () => {
   it("renders company, role, period, and every bullet", () => {
     const item = experience[0];
-    render(<ExperienceItem item={item} />);
+    render(<ExperienceItem item={item} defaultOpen />);
 
     expect(screen.getByText(item.company)).toBeInTheDocument();
     expect(screen.getByText(`${item.role} · ${item.location}`)).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("ExperienceItem", () => {
 
 describe("SkillGroupCard", () => {
   it("renders the group label and all skills", () => {
-    const group = { label: "Languages", skills: ["Python", "TypeScript"] };
+    const group = { label: "Languages", token: "< >", skills: ["Python", "TypeScript"] };
     render(<SkillGroupCard group={group} />);
 
     expect(screen.getByText("Languages")).toBeInTheDocument();
