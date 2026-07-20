@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import Home from "@/app/page";
 import { experience } from "@/data/experience";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
@@ -83,5 +84,19 @@ describe("Dock", () => {
         "noopener noreferrer",
       );
     }
+  });
+});
+
+describe("link targets", () => {
+  it("opens every non-anchor, non-mailto link in a new tab", () => {
+    const { container } = render(<Home />);
+    const links = [...container.querySelectorAll("a[href]")];
+    expect(links.length).toBeGreaterThan(10);
+    const offenders = links.filter((a) => {
+      const href = a.getAttribute("href") ?? "";
+      if (href.startsWith("#") || href.startsWith("mailto:")) return false;
+      return a.getAttribute("target") !== "_blank";
+    });
+    expect(offenders.map((a) => a.getAttribute("href"))).toEqual([]);
   });
 });

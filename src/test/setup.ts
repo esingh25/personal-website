@@ -6,6 +6,21 @@ afterEach(() => {
   cleanup();
 });
 
+// jsdom does not implement IntersectionObserver; Reveal (whileInView) needs it.
+if (typeof window !== "undefined" && !window.IntersectionObserver) {
+  class MockIntersectionObserver {
+    observe = vi.fn();
+    unobserve = vi.fn();
+    disconnect = vi.fn();
+    takeRecords = vi.fn().mockReturnValue([]);
+    root = null;
+    rootMargin = "";
+    thresholds = [];
+  }
+  window.IntersectionObserver =
+    MockIntersectionObserver as unknown as typeof IntersectionObserver;
+}
+
 // jsdom does not implement matchMedia; the app reads it for theme resolution
 // and reduced-motion checks.
 if (typeof window !== "undefined" && !window.matchMedia) {
