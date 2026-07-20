@@ -37,21 +37,23 @@ export const projects: Project[] = [
   {
     name: "CiC Operations App",
     description:
-      "An internal operations console for the Changemakers in Computing mentorship program: run-of-show, task tracking, and the mentor roster in one single-file React tool backed by persistent storage.",
+      "An operations console for the Changemakers in Computing mentorship program: rosters with role-based filtering, a lead-editable run of show, attendance with absence flags, and task tracking.",
     highlights: [
-      "Consolidated three scattered workflows (event run-of-show, task tracking, mentor roster) into one tool the whole mentor team runs from a single file",
-      "Coordinated grading of 19 mentee applications, weekly EdStem lessons, and alumni outreach for a 41-student cohort",
+      "Consolidated scattered mentor workflows (run of show, rosters, attendance, tasks) into one console for the mentor team",
+      "Supports coordination for a 41-student cohort: 19 mentee applications graded, weekly EdStem lessons, and alumni outreach",
     ],
-    stack: ["React", "JavaScript", "localStorage"],
+    stack: ["FastAPI", "Python", "React", "SQLite"],
+    githubUrl: "https://github.com/esingh25/cic-ops",
   },
   {
     name: "Personal AI Dashboard",
+    githubUrl: "https://github.com/esingh25/claude-dashboard",
     description:
-      "One console for seven services: Notion, Slack, Canvas LMS, Google Calendar, Gmail, GitHub, and Canva. The integrations run over MCP using the Claude Agent SDK.",
+      "A personal command center for eight services: Claude Code usage metrics, Canvas, Google Calendar, Gmail, GitHub, Notion, Slack, and Spotify, plus an internship-posting watcher.",
     highlights: [
-      "Sync decoupled from render, so widget refreshes cost zero model calls",
-      "Work routed across three model tiers (Haiku for bulk sync, Sonnet for briefs, Opus for chat) to bound API cost",
+      "Hand-rolled OAuth 2.0 for Google and Spotify with automatic token refresh",
+      "Job watcher polls posting sources, dedupes listings, and fires desktop notifications for new matches",
     ],
-    stack: ["React (Vite)", "FastAPI", "Claude Agent SDK", "MCP"],
+    stack: ["Node.js", "Express", "OAuth 2.0", "REST APIs"],
   },
 ];

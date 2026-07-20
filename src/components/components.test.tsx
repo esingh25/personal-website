@@ -23,12 +23,16 @@ describe("ProjectCard", () => {
     expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("renders without a source button when there is no repo link", () => {
-    const unlinked = projects.find((p) => !p.githubUrl);
-    expect(unlinked).toBeDefined();
-    render(<ProjectCard project={unlinked!} />);
+  it("renders without a card link when there is no repo link", () => {
+    const unlinked = {
+      name: "Unlinked Project",
+      description: "A project fixture without a repository link for coverage.",
+      highlights: ["one highlight"],
+      stack: ["TypeScript"],
+    };
+    render(<ProjectCard project={unlinked} />);
     expect(
-      screen.queryByLabelText(`${unlinked!.name} on GitHub`),
+      screen.queryByLabelText("Unlinked Project on GitHub"),
     ).not.toBeInTheDocument();
   });
 });
